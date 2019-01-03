@@ -71,17 +71,16 @@ names to determine the order
 	public int compareTo(Contact o) 
   {
     if(this.last.compareTo(o.getLast()) > 0) {
-  System.out.println("This object is lexicographically greater than the one we sent to this method");
-  return 1;
+       System.out.println("This object is lexicographically greater than the one we sent to this method");
+      return 1;
     } else if(this.last.compareTo(o.getLast()) == 0) {
-  System.out.println("Theyre lexicographically equal!");
-  return 0;
+        System.out.println("Theyre lexicographically equal!");
+      return 0;
       } 
-  System.out.println("This object is lexicographically smaller than the one we sent to this method");
+    System.out.println("This object is lexicographically smaller than the one we sent to this method");
 		return -1;
     
 	}
-
 
 	public String getFirst() {
 		return first;
