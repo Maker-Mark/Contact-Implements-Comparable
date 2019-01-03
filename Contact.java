@@ -1,5 +1,5 @@
 
-public class Contact implements Comparable
+public class Contact implements Comparable<Contact>
 {
 	private String first;
 	private String last;
@@ -54,6 +54,35 @@ public class Contact implements Comparable
 		return false;
 	}
 
+
+  /*
+  We will define this method in the following way:
+ If the last name of “another” is lexicographically first, return a positive
+number.
+ If the last name of “another” is lexicographically second, return a negative
+number.
+ If the last names are the same and the first names are also the same, return 0.
+ If the last names are the same and the first names are different, use the first
+names to determine the order
+  */
+
+
+	@Override
+	public int compareTo(Contact o) 
+  {
+    if(this.last.compareTo(o.getLast()) > 0) {
+  System.out.println("This object is lexicographically greater than the one we sent to this method");
+  return 1;
+    } else if(this.last.compareTo(o.getLast()) == 0) {
+  System.out.println("Theyre lexicographically equal!");
+  return 0;
+      } 
+  System.out.println("This object is lexicographically smaller than the one we sent to this method");
+		return -1;
+    
+	}
+
+
 	public String getFirst() {
 		return first;
 	}
@@ -106,13 +135,7 @@ public class Contact implements Comparable
 	{
 
 	}
+  
 
-
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-
-		return 0;
-	}
 
 }
