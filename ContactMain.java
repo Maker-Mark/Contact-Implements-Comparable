@@ -21,15 +21,15 @@ public class ContactMain {
 			System.out.println(nCon);
 		}
     
-    
-		sc.close();
-
+    //Testing the functionality of the compareTo method implemented in Contact Class
 		for (int i = 0; i < aList.size(); i++){
-      if(i < aList.size() - 1)
-      aList.get(i).compareTo(aList.get(i + 1));
+      if(i >  0){
+        System.out.println("Value from Lexicographic comparison of " 
+          + aList.get(i).getFullName()  + " with " + aList.get(i - 1)
+           .getFullName()+ ":" + aList.get(i).compareTo(aList.get(i - 1)));
+      }   
     }
-	}
-  
-  
+   	sc.close();
+	}  
 
 }
