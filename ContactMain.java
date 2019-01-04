@@ -2,11 +2,10 @@ import java.util.*;
 import java.io.*;
 import java.util.LinkedList;
 public class ContactMain {
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) throws Exception 
 	{
 		Scanner sc = new Scanner ( new File("Contacts.txt"));
 		LinkedList<Contact> cList = new LinkedList<> ();
-    ArrayList<Contact> aList = new ArrayList<> ();
 		while(sc.hasNext()) {
 			String first, last, phone, address, city, state;
 			 first = sc.nextLine();
@@ -17,16 +16,15 @@ public class ContactMain {
 			 state = sc.nextLine();
 			Contact nCon = new Contact (first, last, phone, address, city, state);
 			cList.add(nCon);
-      aList.add(nCon);
 			System.out.println(nCon);
 		}
     
     //Testing the functionality of the compareTo method implemented in Contact Class
-		for (int i = 0; i < aList.size(); i++){
+		for (int i = 0; i < cList.size(); i++){
       if(i >  0){
         System.out.println("Value from Lexicographic comparison of " 
-          + aList.get(i).getFullName()  + " with " + aList.get(i - 1)
-           .getFullName()+ ":" + aList.get(i).compareTo(aList.get(i - 1)));
+          + cList.get(i).getFullName()  + " with " + cList.get(i - 1)
+           .getFullName()+ ":" + cList.get(i).compareTo(cList.get(i - 1)));
       }   
     }
    	sc.close();

@@ -81,8 +81,8 @@ public class Contact implements Comparable<Contact>
       } else { 
        return lexValFirst;
       }	
-	   }
-   return -1;
+	  }
+    return -1; //default
   }
 	public String getFirst() {
 		return first;
