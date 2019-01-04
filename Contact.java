@@ -55,33 +55,35 @@ public class Contact implements Comparable<Contact>
 	}
 
 
-  /*
-  We will define this method in the following way:
- If the last name of “another” is lexicographically first, return a positive
-number.
- If the last name of “another” is lexicographically second, return a negative
-number.
- If the last names are the same and the first names are also the same, return 0.
- If the last names are the same and the first names are different, use the first
-names to determine the order
-  */
-
-
+  /* compareTo() Method compares the contact object name lexicographically
+   * @param Contact object
+   * Output: integer signaling if this object's last name is lexicographically smaller ,
+   * larger or equal to the cotact object being sent for comparison.
+   * Positive IF:the last name of the "other" contact is lexicographically first, returns the 
+   * posive value returned from the string compareTo method.
+   * Negative IF: the last name of the "other" contact is lexicographically second, returns the 
+   * negative value returned from the string compareTo method.
+   * ZERO IF: the fist and last name are the same.
+   * Uses first name IF: the last name of a contact is the same but the first name is different,
+   * uses the first name of each object to to determine the order.
+   * 
+   */
 	@Override
-	public int compareTo(Contact o) 
-  {
-    if(this.last.compareTo(o.getLast()) > 0) {
-       System.out.println("This object is lexicographically greater than the one we sent to this method");
-      return 1;
-    } else if(this.last.compareTo(o.getLast()) == 0) {
-        System.out.println("Theyre lexicographically equal!");
-      return 0;
-      } 
-    System.out.println("This object is lexicographically smaller than the one we sent to this method");
-		return -1;
-    
-	}
-
+	public int compareTo(Contact o) {  
+  int lexValLast = this.last.compareTo(o.getLast()), 
+  lexValFirst = this.first.compareTo(o.getFirst());
+  
+    if(lexValLast != 0) {
+      return lexValLast; //If theres a eturns the last name va
+    } else if(lexValLast == 0 ) {
+      if(lexValFirst == 0) {
+       return 0;
+      } else { 
+       return lexValFirst;
+      }	
+	   }
+   return -1;
+  }
 	public String getFirst() {
 		return first;
 	}
@@ -135,6 +137,9 @@ names to determine the order
 
 	}
   
+  public String getFullName(){
+  return first + " " + last;
+  }
 
 
 }
