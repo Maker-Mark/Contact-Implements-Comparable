@@ -1,5 +1,5 @@
 
-public class Contact implements Comparable<Contact>
+public class Contact implements Comparable <Contact>
 {
 	private String first;
 	private String last;
@@ -10,19 +10,26 @@ public class Contact implements Comparable<Contact>
 
 	//Constructor with all fields initialized
 	public Contact(String first, String last, String phoneNum,
-			String address, String city, String state) 
-	{
+			String address, String city, String state) {
 		this.first = first;
 		this.last = last;
 		this.phoneNum = phoneNum;
 		this.address = address;
 		this.city = city;
 		this.state = state;
+	}  
+  
+  //Constructor for Contact thar only has a name and phone number
+  public Contact(String first, String last, String phoneNum) {
+	  this.first = first;
+		this.last = last;
+		this.phoneNum = phoneNum;
 	}
+  
 	/**
 	 * updateContact method allows the user to update all the
 	 * information on a contact.
-	 * @param first
+	 * @param first 
 	 * @param last
 	 * @param phoneNum
 	 * @param address
@@ -39,11 +46,16 @@ public class Contact implements Comparable<Contact>
 		this.state = state;
 
 	}
+  //Returns full name as a string
+  public String getFullName() {
+  return first + " " + last;
+  }
+  
 	//Returns a print-friendly, formatted, string 
-	public String toString() 
-	{
-		return String.format("%-8s %-10s Phone Number:%s%n%-10s%n%-8s, %-10s %n" , this.first, 
-				this.last, this.phoneNum, this.address, this.city, this.state);
+	public String toString() {
+		return String.format("%-8s %-10s Phone Number:(%s)-%s-%s %n%-10s%n%-8s, %-10s %n" , this.first, 
+				this.last, this.phoneNum.substring(0,3),this.phoneNum.substring(3,6), 
+        this.phoneNum.substring(6,10),this.address, this.city, this.state);
 	}
 	
 	//Returns true if the first and last name are equal (ignoring case)
@@ -53,7 +65,6 @@ public class Contact implements Comparable<Contact>
 			return true;
 		return false;
 	}
-
 
   /* compareTo() Method compares the contact object name lexicographically
    * @param Contact object
@@ -66,13 +77,12 @@ public class Contact implements Comparable<Contact>
    * ZERO IF: the fist and last name are the same.
    * Uses first name IF: the last name of a contact is the same but the first name is different,
    * uses the first name of each object to to determine the order.
-   * 
    */
+   
 	@Override
 	public int compareTo(Contact o) {  
   int lexValLast = this.last.compareTo(o.getLast()), 
   lexValFirst = this.first.compareTo(o.getFirst());
-  
     if(lexValLast != 0) {
       return lexValLast; //If theres a eturns the last name va
     } else if(lexValLast == 0 ) {
@@ -81,8 +91,8 @@ public class Contact implements Comparable<Contact>
       } else { 
        return lexValFirst;
       }	
-	   }
-   return -1;
+	  }
+    return - 1; //default
   }
 	public String getFirst() {
 		return first;
@@ -131,15 +141,5 @@ public class Contact implements Comparable<Contact>
 	public void setState(String state) {
 		this.state = state;
 	}
-
-	public Contact(String first, String last, String phoneNum)
-	{
-
-	}
   
-  public String getFullName(){
-  return first + " " + last;
-  }
-
-
 }
