@@ -1,6 +1,5 @@
 
-public class Contact implements Comparable <Contact>
-{
+public class Contact implements Comparable <Contact> {
 	private String first;
 	private String last;
 	private String phoneNum;
@@ -59,8 +58,7 @@ public class Contact implements Comparable <Contact>
 	}
 	
 	//Returns true if the first and last name are equal (ignoring case)
-	public boolean equals(Contact c) 
-	{
+	public boolean equals(Contact c) {
 		if(c.first.equalsIgnoreCase(this.first) && c.last.equalsIgnoreCase(this.last))
 			return true;
 		return false;

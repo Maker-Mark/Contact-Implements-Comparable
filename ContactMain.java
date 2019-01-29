@@ -7,7 +7,7 @@ public class ContactMain {
 	{
 		Scanner sc = new Scanner ( new File("Contacts.txt")); //Scanner to read from a file
 		LinkedList<Contact> cList = new LinkedList<>(); //LinkedList to hold Contact Objects
-    StringTokenizer sTok = new StringTokenizer();
+    StringTokenizer sTok = new StringTokenizer(" ");
     //Do the following WHILE: sc.hasNext() returns true
 		while(sc.hasNext()) { //Implement way to make contacts with just name       and phone 
 			String first, last, phone, address, city, state;
