@@ -82,15 +82,13 @@ public class Contact implements Comparable <Contact> {
   int lexValLast = this.last.compareTo(o.getLast()), 
   lexValFirst = this.first.compareTo(o.getFirst());
     if(lexValLast != 0) {
-      return lexValLast; //If theres a eturns the last name va
-    } else if(lexValLast == 0 ) {
-      if(lexValFirst == 0) {
-       return 0;
+      return lexValLast; //If theres a differnce in the last name returns that value. Otherwise
+      } 
+    if(lexValFirst == 0) {
+       return 0; // This means they have the same exact name 
       } else { 
-       return lexValFirst;
+       return lexValFirst; // Send back the difference of their first name, since they share a last name
       }	
-	  }
-    return - 1; //default
   }
 	public String getFirst() {
 		return first;
