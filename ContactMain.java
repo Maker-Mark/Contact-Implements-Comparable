@@ -5,6 +5,7 @@ public class ContactMain {
   
 	public static void main(String[] args) throws Exception 
 	{
+    PrintWriter outFile = new PrintWriter("output.txt");
 		Scanner sc = new Scanner ( new File("Contacts.txt")); //Scanner to read from a file
 		LinkedList<Contact> cList = new LinkedList<>(); //LinkedList to hold Contact Objects
     StringTokenizer sTok = new StringTokenizer(" ");
@@ -26,6 +27,9 @@ public class ContactMain {
       if(i >  0) {
         System.out.println("Value from Lexicographic comparison of " 
           + cList.get(i).getFullName()  + " with " + cList.get(i - 1)
+          .getFullName()+ ":" + cList.get(i).compareTo(cList.get(i - 1)));
+         outFile.println("Value from Lexicographic comparison of " 
+          + cList.get(i).getFullName()  + "with" + cList.get(i - 1)
           .getFullName()+ ":" + cList.get(i).compareTo(cList.get(i - 1)));
       }   
     }
