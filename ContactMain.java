@@ -76,7 +76,6 @@ public class ContactMain {
    }
    System.out.println("Short Contact at list number " + i + " is now:");
    System.out.println(cList.get(i));
-
   }
 
   sc.close();
