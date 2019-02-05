@@ -43,8 +43,14 @@ public class Contact implements Comparable <Contact> {
 		this.address = address;
 		this.city = city;
 		this.state = state;
-
 	}
+  
+  public void updateContact(String first, String last, String phoneNum ) {
+		this.first = first;
+		this.last = last;
+		this.phoneNum = phoneNum;
+	}
+  
   //Returns full name as a string
   public String getFullName() {
   return first + " " + last;
@@ -52,17 +58,31 @@ public class Contact implements Comparable <Contact> {
   
 	//Returns a print-friendly, formatted, string 
 	public String toString() {
+    if(this.address !=null){
 		return String.format("%-8s %-10s Phone Number:(%s)-%s-%s %n%-10s%n%-8s, %-10s %n" , this.first, 
 				this.last, this.phoneNum.substring(0,3),this.phoneNum.substring(3,6), 
         this.phoneNum.substring(6,10),this.address, this.city, this.state);
-	}
+    }else{
+      return String.format("%-8s %-10s Phone Number:(%s)-%s-%s", this.first, 
+				this.last, this.phoneNum.substring(0,3),this.phoneNum.substring(3,6), 
+        this.phoneNum.substring(6,10));
+     }
+                          
+}
 	
 	//Returns true if the first and last name are equal (ignoring case)
-	public boolean equals(Contact c) {
-		if(c.first.equalsIgnoreCase(this.first) && c.last.equalsIgnoreCase(this.last))
-			return true;
-		return false;
-	}
+  // Check if its the same type nusing instanceof
+	public boolean equals(Object c) {
+    if( ! (c instanceof Contact))
+      return false;
+    // We are creating a ref var "con" of contact type that is equal to the address of object c being sent in.
+    // We cast it down, because once we get past the instanceof boolean we know that the Object is actually a Contact
+    // Now we just need to remind the Object c that it is an Contact and then with the Contact var "con" we can simply use 
+    // the compareTo of Contact on con, to compare it to the object tht is being sent in.
+    Contact con = (Contact) c;
+		return con.compareTo(this) ==0;
+    
+  }
 
   /* compareTo() Method compares the contact object name lexicographically
    * @param Contact object
@@ -90,52 +110,29 @@ public class Contact implements Comparable <Contact> {
        return lexValFirst; // Send back the difference of their first name, since they share a last name
       }	
   }
+
 	public String getFirst() {
 		return first;
-	}
-
-	public void setFirst(String first) {
-		this.first = first;
 	}
 
 	public String getLast() {
 		return last;
 	}
 
-	public void setLast(String last) {
-		this.last = last;
-	}
-
 	public String getPhoneNum() {
 		return phoneNum;
 	}
-
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
-
 	public String getAddress() {
 		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getCity() {
 		return city;
 	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
+  
 	public String getState() {
 		return state;
 	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
   
 }
