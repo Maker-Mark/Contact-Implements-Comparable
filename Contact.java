@@ -96,9 +96,7 @@ public class Contact implements Comparable <Contact> {
    * Uses first name IF: the last name of a contact is the same but the first name is different,
    * uses the first name of each object to to determine the order.
    */
-   
-	@Override
-	public int compareTo(Contact o) {  
+  public int compareTo(Contact o) {  
   int lexValLast = this.last.compareTo(o.getLast()), 
   lexValFirst = this.first.compareTo(o.getFirst());
     if(lexValLast != 0) {
